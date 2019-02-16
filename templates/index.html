@@ -37,19 +37,42 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Term is required">
 					<span class="label-input100">Term</span>
-					<input class="input100" type="text" name="name" placeholder="Enter the term when course is conducted">
+					<input class="input100" type="text" name="name" placeholder="Enter term">
 					<span class="focus-input100"></span>
 				</div>
 
-				<div class="wrap-input100 validate-input" data-validate = "Name is required: Tony Quek, Alexander Binder">
-					<span class="label-input100">Instructor Name</span>
-					<input class="input100" type="text" name="email" placeholder="Enter subject lead's names separated by comma">
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Core / Elective</span>
+					<div>
+						<select class="selection-2" name="service">
+							<option>Core</option>
+							<option>Elective</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Code is required">
+					<span class="label-input100">Code</span>
+					<input class="input100" type="text" name="email" placeholder="Enter Subject Code">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Subject is required">
+					<span class="label-input100">Subject</span>
+					<input class="input100" type="text" name="name" placeholder="Enter subject">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Subject Lead's Name is required">
+					<span class="label-input100">Subject Lead</span>
+					<input class="input100" type="text" name="name" placeholder="Enter subject lead's names separated by comma">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@mymail.sutd.edu.sg">
 					<span class="label-input100">Lead Instructor Email</span>
-					<input class="input100" type="text" name="email" placeholder="Enter subject lead's email">
+					<input class="input100" type="text" name="email" placeholder="Enter one subject lead's email">
 					<span class="focus-input100"></span>
 				</div>
 
