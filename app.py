@@ -1,11 +1,13 @@
 from flask import Flask
 from flask import flash, redirect, render_template, url_for, request, session, abort
-from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
-db = SQLAlchemy(app)
+print("[INFO] DATABASE_URI:", app.config["SQLALCHEMY_DATABASE_URI"])
+
+from models import db
+db.init_app(app)
  
 @app.route('/')
 def home():
