@@ -37,14 +37,14 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Term is required">
 					<span class="label-input100">Term</span>
-					<input class="input100" type="text" name="name" placeholder="Enter term">
+					<input class="input100" type="text" name="term" placeholder="Enter term">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Core / Elective</span>
 					<div>
-						<select class="selection-2" name="service">
+						<select class="selection-2" name="course type">
 							<option>Core</option>
 							<option>Elective</option>
 						</select>
@@ -54,37 +54,37 @@
 
 				<div class="wrap-input100 validate-input" data-validate = "Code is required">
 					<span class="label-input100">Code</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Subject Code">
+					<input class="input100" type="number" name="code" placeholder="Enter Subject Code">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="Subject is required">
 					<span class="label-input100">Subject</span>
-					<input class="input100" type="text" name="name" placeholder="Enter subject">
+					<input class="input100" type="text" name="subject" placeholder="Enter subject">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="Subject Lead's Name is required">
 					<span class="label-input100">Subject Lead</span>
-					<input class="input100" type="text" name="name" placeholder="Enter names separated by comma">
+					<input class="input100" type="text" name="subject lead" placeholder="Enter names separated by comma">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@mymail.sutd.edu.sg">
 					<span class="label-input100">Subject Lead Email</span>
-					<input class="input100" type="text" name="email" placeholder="Enter one subject lead's email">
+					<input class="input100" type="text" name="subject lead email" placeholder="Enter one subject lead's email">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Cohort size is required">
 					<span class="label-input100">Cohort (Class) Size</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Cohort Size">
+					<input class="input100" type="text" name="cohort size" placeholder="E.g. 50 x 3">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Total Enrolment is required">
 					<span class="label-input100">Total Enrolment Size</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Total Enrolment Size">
+					<input class="input100" type="number" name="enrolment" placeholder="Enter Total Enrolment Size">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -102,26 +102,13 @@
 
 				<div class="wrap-input100 validate-input" data-validate = "...">
 					<span class="label-input100">Preferred Room Requirements</span>
-					<input class="input100" type="text" name="email" placeholder="E.g. Lab: LEET Lab, CBL: Classroom">
+					<input class="input100" type="text" name="room requirements" placeholder="E.g. Lab: LEET Lab, CBL: Classroom">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "...">
 					<span class="label-input100">Other Requirements</span>
-					<input class="input100" type="text" name="email" placeholder="E.g. AV, multiple screens">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Budget</span>
-					<div>
-						<select class="selection-2" name="budget">
-							<option>Select Budget</option>
-							<option>1500 $</option>
-							<option>2000 $</option>
-							<option>2500 $</option>
-						</select>
-					</div>
+					<input class="input100" type="text" name="other requirements" placeholder="E.g. AV, multiple screens">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -151,14 +138,14 @@
 	<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="/static/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="/static/vendor/select2/select2.min.js"></script>
 	<script>
 		$(".selection-2").select2({
 			minimumResultsForSearch: 20,
@@ -166,12 +153,12 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="/static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/static/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="/static/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="/static/js/main.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
