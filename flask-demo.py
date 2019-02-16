@@ -28,7 +28,7 @@ def logout():
 
 @app.route('/course-details', methods=['GET','POST'])
 def do_prof_input():
-  return render_template('courseDetails.html')
+  return render_template('index.html')
 
  
 if __name__ == "__main__":
