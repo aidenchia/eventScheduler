@@ -30,9 +30,14 @@ def logout():
   session['logged_in'] = False
   return home()
 
-@app.route('/course-details', methods=['GET','POST'])
-def do_prof_input():
-  return render_template('index.html')
+@app.route("/database", methods=['GET','POST'])
+def display():
+  import psycopg2
+  conn = psycopg2.connect("dbname=course_details user=postgres")
+  cur = conn.cursor()
+  cur.execute("SELECT * FROM faculty;")
+  return str(cur.fetchone())
+
 
  
 if __name__ == "__main__":
