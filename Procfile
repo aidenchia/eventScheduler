@@ -1,1 +1,1 @@
-web: gunicorn flask-demo:app
+web: gunicorn app:app
