@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="/static/images/icons/SUTD-1.jpg"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -37,7 +37,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Term is required">
 					<span class="label-input100">Term</span>
-					<input class="input100" type="text" name="term" placeholder="Enter term">
+					<input class="input100" type="number" name="term" placeholder="Enter term">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -90,7 +90,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate = "Class Sections is required">
 					<span class="label-input100">Class Sections</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Class Sections">
+					<input class="input100" type="text" name="email" placeholder="E.g. LI01, CI01-CI03">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -112,9 +112,61 @@
 					<span class="focus-input100"></span>
 				</div>
 
-				<div class="wrap-input100 validate-input" data-validate = "Message is required">
-					<span class="label-input100">Message</span>
-					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+				<div class="wrap-input100 validate-input" data-validate = "Enter None if no makeup lessons">
+					<span class="label-input100">Make Up Lesson</span>
+					<input class="input100" type="text" name="make up" placeholder="Enter None if no makeup lessons">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "...">
+					<span class="label-input100">Mid Term Test / Exam</span>
+					<input class="input100" type="text" name="mid term exam" placeholder="Please indicate duration of test">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Invigilator Required?</span>
+					<div>
+						<select class="selection-2" name="invigilator midterms">
+							<option>Yes</option>
+							<option>No</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "...">
+					<span class="label-input100">Venue Required?</span>
+					<input class="input100" type="text" name="venue" placeholder="E.g. If required e.g. LT1, else None">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "...">
+					<span class="label-input100">Review Session</span>
+					<input class="input100" type="text" name="review" placeholder="Please enter duration of session, else None">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "...">
+					<span class="label-input100">Final Exam</span>
+					<input class="input100" type="text" name="final exam" placeholder="Please enter duration of exam, else None">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Invigilator Required?</span>
+					<div>
+						<select class="selection-2" name="invigilator final">
+							<option>Yes</option>
+							<option>No</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "...">
+					<span class="label-input100">Remarks</span>
+					<textarea class="input100" name="remarks" placeholder="Any remarks...?"></textarea>
 					<span class="focus-input100"></span>
 				</div>
 
