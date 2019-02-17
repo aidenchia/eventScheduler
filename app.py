@@ -33,7 +33,7 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   import psycopg2
-  conn = psycopg2.connect("dbname=aidenchia user=postgres")
+  conn = psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"], sslmode='require')
   cur = conn.cursor()
   cur.execute("SELECT * FROM faculty;")
   return str(cur.fetchone())
