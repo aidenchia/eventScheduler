@@ -37,7 +37,8 @@ def display():
   import psycopg2
   conn = psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"], sslmode='require')
   cur = conn.cursor()
-  cur.execute("CREATE TABLE faculty")
+  cur.execute("CREATE TABLE IF NOT EXISTS faculty")
+  cur.execute("SELECT * FROM faculty")
   return str(cur.fetchone())
 
 
