@@ -33,7 +33,7 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   import psycopg2
-  conn = psycopg2.connect("dbname=course_details user=postgres")
+  conn = psycopg2.connect("dbname=aidenchia user=postgres")
   cur = conn.cursor()
   cur.execute("SELECT * FROM faculty;")
   return str(cur.fetchone())
