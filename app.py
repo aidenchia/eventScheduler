@@ -7,7 +7,8 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 print("[INFO] DATABASE_URI:", app.config["SQLALCHEMY_DATABASE_URI"])
 
 from models import db
-db.init_app(app)
+with app.app_context():
+  db.init_app(app)
  
 @app.route('/')
 def home():
