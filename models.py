@@ -24,7 +24,7 @@ class Subjects(db.Model):
     if subject is not None:
       return subject
     else:
-      subject = Subjects(subjectCode, term)
+      subject = Subjects(subjectCode, term, subjectType, subjectName)
       db.session.add(subject)
       db.session.commit()
       return subject
