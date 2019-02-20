@@ -20,7 +20,7 @@ class Subjects(db.Model):
     if subject is not None:
       return str(subject.term)
     else:
-      subject = Subject(subjectCode, term)
+      subject = Subjects(subjectCode, term)
       db.session.add(subject)
       db.session.commit()
       print("Added new subject!")
