@@ -2,6 +2,7 @@ from flask import Flask
 from flask import flash, redirect, render_template, url_for, request, session, abort
 import os
 
+
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 print("[INFO] DATABASE_URI:", app.config["SQLALCHEMY_DATABASE_URI"])
@@ -34,23 +35,11 @@ def logout():
 
 @app.route("/database", methods=['GET','POST'])
 def display():
-  import psycopg2
-  conn = psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"], sslmode='require')
-  cur = conn.cursor()
-  createTable(cur, "SUBJECT")
-  return request.form["term"]
-
-def createTable(cursor, tablename):
-  cursor.execute(
-    """
-    CREATE TABLE IF NOT EXISTS %(tablename)s
-    (subjectCode float(4) PRIMARY KEY);
-    """, {"tablename": tablename,})
-  return None
-
-def insertTable(cursor, table, values):
-  cursor.execute("INSERT INTO table VALUES(values[0]);")
-  return None
+  from models import Subjects
+  introToJava = Subjects(50.001, 4)
+  db.session.add(introToJava)
+  db.session.commit()
+  return Subjects.query().filter_by(subjectCode=50.001).first().subjectCode
 
 
  
