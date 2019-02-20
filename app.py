@@ -34,12 +34,13 @@ def logout():
 
 @app.route("/database", methods=['GET','POST'])
 def display():
-  import psycopg2
-  conn = psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"], sslmode='require')
-  cur = conn.cursor()
-  cur.execute("CREATE TABLE IF NOT EXISTS faculty (id serial PRIMARY KEY, name varchar);")
-  cur.execute("SELECT * FROM faculty;")
-  return str(cur.fetchone())
+  return request.form["term"]
+  #import psycopg2
+  #conn = psycopg2.connect(app.config["SQLALCHEMY_DATABASE_URI"], sslmode='require')
+  #cur = conn.cursor()
+  #cur.execute("CREATE TABLE IF NOT EXISTS faculty (id serial PRIMARY KEY, name varchar);")
+  #cur.execute("SELECT * FROM faculty;")
+  #return str(cur.fetchone())
 
 
  
