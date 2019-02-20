@@ -22,12 +22,14 @@ class Subjects(db.Model):
   def insert(subjectCode, term, subjectType, subjectName):
     subject = db.session.query(Subjects).filter_by(subjectCode=subjectCode).first()
     if subject is not None:
-      return subject
+      result = "{}: {}".format(str(subject.subjectCode), str(subject.subjectName))
+      return result
     else:
       subject = Subjects(subjectCode, term, subjectType, subjectName)
       db.session.add(subject)
       db.session.commit()
-      return subject
+      result = "Added {}: {} to database".format(str(subject.subjectCode), str(subject.subjectName))
+      return result
 
 
 
