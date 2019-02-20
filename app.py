@@ -39,7 +39,7 @@ def display():
   esc = Subjects(50.006, 5)
   db.session.add(esc)
   db.session.commit()
-  return db.session.query(Subjects).filter_by(subjectCode=50.006).first()
+  return db.session.query(Subjects).filter_by(subjectCode=50.006).first().term
 
 
  
