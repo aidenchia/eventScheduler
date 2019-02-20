@@ -36,8 +36,8 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   from models import Subjects
-  introToJava = Subjects(50.001, 4)
-  db.session.add(introToJava)
+  esc = Subjects(50.005, 5)
+  db.session.add(esc)
   db.session.commit()
   return db.session.query(Subjects).filter_by(subjectCode=50.001).first()
 
