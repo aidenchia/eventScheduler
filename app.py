@@ -43,7 +43,7 @@ def display():
 def createTable(cursor, tablename):
   cursor.execute(
     """
-    CREATE TABLE IF NOT EXISTS %s
+    CREATE TABLE IF NOT EXISTS (%s)
     (subjectCode float(4) PRIMARY KEY);
     """, (tablename,))
   return None
