@@ -16,7 +16,7 @@ class Subjects(db.Model):
 
   @staticmethod
   def insert(subjectCode, term):
-    subject = db.session.query(Subjects).filter_by(subjectCode=subjectCode).all()
+    subject = db.session.query(Subjects).filter_by(subjectCode=subjectCode).first()
     if subject is not None:
       return str(subject.term)
     else:
