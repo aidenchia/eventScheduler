@@ -14,5 +14,22 @@ class Subjects(db.Model):
   def __repr__(self):
     return '<SUBJECT {}>'.format(self.subjectCode)
 
+  @staticmethod
+  def insert(subjectCode, term):
+    subject = db.session.query(Subjects).filter_by(subjectCode=subjectCode).all()
+    if subject is not None:
+      return str(subject.term)
+    else:
+      subject = Subject(subjectCode, term)
+      db.session.add(subject)
+      db.session.commit()
+      print("Added new subject!")
+      return str(subject.term)
+
+
+
+
+
+
 
 

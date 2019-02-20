@@ -36,14 +36,8 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   from models import Subjects
-  subject = db.session.query(Subjects).filter_by(subjectCode=50.006).first()
-  if subject is not None:
-    return str(subject.term)
-  else:
-    esc = Subjects(50.006, 5)
-    db.session.add(esc)
-    db.session.commit()
-    return str(db.session.query(Subjects).filter_by(subjectCode=50.006).first().term)
+  result = Subjects.insert(3.007, 3)
+  return result
 
 
  
