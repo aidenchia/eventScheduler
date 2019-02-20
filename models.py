@@ -24,6 +24,8 @@ class Subjects(db.Model):
       query = db.session.query(Subjects).order_by(Subjects.subjectName).all()
       return str(query)
 
+    return "TODO"
+
 
   @staticmethod
   def insert(subjectCode, term, subjectType, subjectName):
