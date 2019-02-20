@@ -32,31 +32,30 @@
   </div>
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
-      {% for subject in result %}
       <tbody>
         <tr>
-          <td>{{subject.subjectCode}}</td>
+          <td>{{result[0].subjectCode}}</td>
           <td>AUSTRALIAN COMPANY </td>
           <td>$1.38</td>
           <td>+2.01</td>
           <td>-0.36%</td>
         </tr>
         <tr>
-          <td>{{subject.subjectCode}}</td>
+          <td>{{result[1].subjectCode}}</td>
           <td>AUSENCO</td>
           <td>$2.38</td>
           <td>-0.01</td>
           <td>-1.36%</td>
         </tr>
         <tr>
-          <td>{{subject.subjectCode}}</td>
+          <td>{{result[2].subjectCode}}</td>
           <td>ADELAIDE</td>
           <td>$3.22</td>
           <td>+0.01</td>
           <td>+1.36%</td>
         </tr>
         <tr>
-          <td>{{subject}}</td>
+          <td>{{result[3].subjectCode}}</td>
           <td>ADITYA BIRLA</td>
           <td>$1.02</td>
           <td>-1.01</td>
@@ -259,7 +258,6 @@
           <td>+2.36%</td>
         </tr>
       </tbody>
-      {% endfor %}
     </table>
   </div>
 </section>
