@@ -6,25 +6,28 @@ class Subjects(db.Model):
   __tablename__= 'Subjects'
   subjectCode = db.Column(db.Float, primary_key=True) # primary keys are unique identifiers
   term = db.Column(db.Integer, nullable=False)
+  subjectType = db.Column(db.Text, nullable=False)
+  subjectName = db.Column(db.Text, nullable=False)
 
-  def __init__(self, subjectCode, term):
+  def __init__(self, subjectCode, term, subjectType, subjectName):
     self.subjectCode = subjectCode
     self.term = term
+    self.subjectType = subjectType
+    self.subjectName = subjectName
 
   def __repr__(self):
-    return '<SUBJECT {}>'.format(self.subjectCode)
+    return '{}: {}'.format(self.subjectCode, self.subjectName)
 
   @staticmethod
-  def insert(subjectCode, term):
+  def insert(subjectCode, term, subjectType, subjectName):
     subject = db.session.query(Subjects).filter_by(subjectCode=subjectCode).first()
     if subject is not None:
-      return str(subject.term)
+      return subject
     else:
       subject = Subjects(subjectCode, term)
       db.session.add(subject)
       db.session.commit()
-      print("Added new subject!")
-      return str(subject.term)
+      return subject
 
 
 
