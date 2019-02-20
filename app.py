@@ -45,7 +45,7 @@ def createTable(cursor, tablename):
     """
     CREATE TABLE IF NOT EXISTS %(tablename)s
     (subjectCode float(4) PRIMARY KEY);
-    """, {"tablename": tablename},)
+    """, {"tablename": tablename,})
   return None
 
 def insertTable(cursor, table, values):
