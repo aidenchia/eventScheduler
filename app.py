@@ -43,7 +43,7 @@ def display():
     request.form['subjectName'])
 
   result = Subjects.select(all=True)
-  return result
+  return render_template("database.html", result = result)
  
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=5000)
