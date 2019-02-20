@@ -41,7 +41,7 @@ def display():
     request.form['term'], 
     request.form['subjectType'], 
     request.form['subjectName'])
-  return result
+  return render_template('database.html')
  
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=5000)
