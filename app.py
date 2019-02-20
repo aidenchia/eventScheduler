@@ -36,7 +36,7 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   from models import Subjects
-  subject = db.session.query(Subjects).filter_by(subjectCode=50.006f).first()
+  subject = db.session.query(Subjects).filter_by(subjectCode=50.006).first()
   if subject is not None:
     return str(subject.term)
   else:
