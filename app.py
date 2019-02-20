@@ -41,10 +41,17 @@ def display():
   return request.form["term"]
 
 def createTable(cursor, tablename):
-  cursor.execute("CREATE TABLE IF NOT EXISTS %s;" %tablename)
+  cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS %s
+    (subjectCode float(4) PRIMARY KEY);
+    """ %tablename)
+  return None
+
 
 def insertTable(cursor, table, values):
   cursor.execute("INSERT INTO table VALUES(values[0]);")
+  return None
 
 
  
