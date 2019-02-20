@@ -36,14 +36,14 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   from models import Subjects
-  subject = db.session.query(Subjects).filter_by(subjectCode=50.006).first()
-  if subject:
-    return subject.term
+  subject = db.session.query(Subjects).filter_by(subjectCode=50.006f).first()
+  if subject is not None:
+    return str(subject.term)
   else:
     esc = Subjects(50.006, 5)
     db.session.add(esc)
     db.session.commit()
-    return db.session.query(Subjects).filter_by(subjectCode=50.006).first().term
+    return str(db.session.query(Subjects).filter_by(subjectCode=50.006).first().term)
 
 
  
