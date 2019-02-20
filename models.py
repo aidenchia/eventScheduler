@@ -19,7 +19,17 @@ class Subjects(db.Model):
     return '{}: {}'.format(self.subjectCode, self.subjectName)
 
   @staticmethod
+  def select(all=False):
+    if all:
+      query = db.session.query(Subjects).order_by(Subjects.subjectCode).all()
+      return str(query)
+
+
+  @staticmethod
   def insert(subjectCode, term, subjectType, subjectName):
+    if None in (subjectCode, term, subjectType, subjectName):
+      return "Please fill in all required fields"
+
     subject = db.session.query(Subjects).filter_by(subjectCode=subjectCode).first()
     if subject is not None:
       result = "{}: {} already in database".format(str(subject.subjectCode), str(subject.subjectName))
