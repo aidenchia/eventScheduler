@@ -21,7 +21,7 @@ class Subjects(db.Model):
   @staticmethod
   def select(all=False):
     if all:
-      query = db.session.query(Subjects).order_by(Subjects.subjectCode).all()
+      query = db.session.query(Subjects).order_by(Subjects.subjectName).all()
       return str(query)
 
 
