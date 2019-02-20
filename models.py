@@ -5,9 +5,9 @@ db = SQLAlchemy()
 class Subjects(db.Model):
   __tablename__= 'Subjects'
   subjectCode = db.Column(db.Float, primary_key=True) # primary keys are unique identifiers
-  term = db.Column(db.Integer, nullable=False)
-  subjectType = db.Column(db.Text, nullable=False)
-  subjectName = db.Column(db.Text, nullable=False)
+  term = db.Column(db.Integer, nullable=True)
+  subjectType = db.Column(db.Text, nullable=True)
+  subjectName = db.Column(db.Text, nullable=True)
 
   def __init__(self, subjectCode, term, subjectType, subjectName):
     self.subjectCode = subjectCode

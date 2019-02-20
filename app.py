@@ -36,10 +36,12 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   from models import Subjects
-  result = Subjects.insert(3.007, 3, "Core", "Intro to Design")
-  return result
-
-
+  result = Subjects.insert(
+    request.form['subjectCode'], 
+    request.form['term'], 
+    request.form['subjectType'], 
+    request.form['subjectName'])
+  return request.form['subjectCode']
  
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=5000)
