@@ -39,7 +39,7 @@ def display():
   introToJava = Subjects(50.001, 4)
   db.session.add(introToJava)
   db.session.commit()
-  return Subjects.query().filter_by(subjectCode=50.001).first().subjectCode
+  return db.session.query(Subjects).filter_by(subjectCode=50.001).first()
 
 
  
