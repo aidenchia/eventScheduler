@@ -36,7 +36,7 @@ def logout():
 @app.route("/database", methods=['GET','POST'])
 def display():
   from models import Subjects
-  result = Subjects.insert(
+  inserted = Subjects.insert(
     request.form['subjectCode'], 
     request.form['term'], 
     request.form['subjectType'], 

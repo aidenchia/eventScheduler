@@ -22,7 +22,7 @@ class Subjects(db.Model):
   def select(all=False):
     if all:
       query = db.session.query(Subjects).order_by(Subjects.subjectName).all()
-      return str(query)
+      return query
 
     return "TODO"
 
