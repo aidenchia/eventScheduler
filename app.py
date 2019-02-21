@@ -19,11 +19,6 @@ def home():
     return render_template('login.html')
   else: # if logged in already
     return "Logged In"
-
-@login_manager.user_loader
-def load_user(user_id):
-  from models import Users
-  return db.
  
 @app.route('/login', methods=['GET','POST'])
 def do_admin_login():
