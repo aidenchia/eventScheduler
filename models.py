@@ -31,7 +31,7 @@ class Subjects(db.Model):
     import psycopg2
     conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require')
     cur = conn.cursor()
-    cur.execute(r"""\copy (SELECT * FROM "Subjects") TO 'course_details.csv' CSV DELIMITER ',';""")
+    cur.copy_to('course_details.csv', table="Subjects", sep=",")
 
     return "Data written to 'course_details.csv'"
 
