@@ -31,7 +31,8 @@ class Subjects(db.Model):
     import psycopg2
     conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require')
     cur = conn.cursor()
-    cur.copy_to('course_details.csv', table="Subjects", sep=",")
+    excel = open('course_details.csv', 'w+')
+    cur.copy_to(excel, table="Subjects", sep=",")
 
     return "Data written to 'course_details.csv'"
 
