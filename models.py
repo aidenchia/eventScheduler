@@ -60,7 +60,7 @@ class Subjects(db.Model):
       return result
 
 class Users(db.Model):
-  __tablename__='Users'
+  __tablename__= 'Users'
   email = db.Column(db.String, primary_key=True)
   password = db.Column(db.String)
   department = db.Column(db.String)

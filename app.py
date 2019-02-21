@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import flash, redirect, render_template, url_for, request, session, abort
 from flask_login import login_required
+import forms
 import os
 
 
@@ -14,23 +15,19 @@ with app.app_context():
   db.create_all()
   login_manager.init_app(app)
  
-@app.route('/')
-def home():
-  if not session.get('logged_in'): # if not logged in
-    return render_template('login.html')
-  else: # if logged in already
-    return "Logged In"
- 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET','POST'])
-def do_admin_login():
-  if request.form['password'] == 'password' and request.form['username'] == 'admin':
-    session['logged_in'] = True
+def login():
+  form = LoginForm()
+  return render_template('login.html', title='Login', form=form)
+ 
+@app.route('/courseInput', methods=['GET','POST'])
+@login_required
+def courseInput():
     return render_template('index.html')
-  else:
-    flash('wrong password!')
-    return home()
 
 @app.route("/logout")
+@login_required
 def logout():
   session['logged_in'] = False
   return home()
@@ -49,6 +46,7 @@ def display():
   return render_template("database.html", result = result)
 
 @app.route("/export", methods=['GET', 'POST'])
+@login_required
 def getTable():
   from models import Subjects
   result = Subjects.export(app)

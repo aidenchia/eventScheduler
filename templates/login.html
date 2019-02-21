@@ -1,29 +1,17 @@
 <link rel="icon" type="image/png" href="/static/images/icons/sutd-logo-png-1.png"/>
-<link rel="stylesheet" href="/static/style.css" type="text/css">
-{% block body %}
-{% if session['logged_in'] %}
- 
-You're logged in already!
- 
-{% else %}
- 
-<form action="/login" method="POST">
-<div class="login">
-<div class="login-screen">
-<div class="app-title">
-<h1>Login</h1>
-</div>
-<div class="login-form">
-<div class="control-group">
-        <input type="text" class="login-field" value="" placeholder="username" name="username">
-<label class="login-field-icon fui-user" for="login-name"></label></div>
-<div class="control-group">
-        <input type="password" class="login-field" value="" placeholder="password" name="password">
-<label class="login-field-icon fui-lock" for="login-pass"></label></div>
-<input type="submit" value="Log in" class="btn btn-primary btn-large btn-block">
- 
-</div>
-</div>
-</div>
-</form>{% endif %}
+
+{% block content %}
+    <h1>Sign In</h1>
+    <form action="" method="post" novalidate>
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
 {% endblock %}
