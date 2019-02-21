@@ -6,6 +6,7 @@ import os
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 print("[INFO] DATABASE_URL:", app.config["SQLALCHEMY_DATABASE_URI"])
+print("[INFO] DEBUG MODE = ",app.config[DEBUG])
 
 from models import db
 with app.app_context():

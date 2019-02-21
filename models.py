@@ -34,7 +34,13 @@ class Subjects(db.Model):
     cur.execute("""SELECT * FROM "Subjects";""")
     rows = cur.fetchall()
 
-    return str(rows[0])
+    import csv
+    with open("Course Details.csv", "w") as csvfile:
+      csvwriter = csv.writer(csvfile, delimiter=",")
+      for row in rows:
+        csvwriter.writerow(row)
+
+    return "Data written to 'Course Details.csv'"
 
 
   @staticmethod
