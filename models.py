@@ -24,8 +24,10 @@ class Subjects(db.Model):
       query = db.session.query(Subjects).order_by(Subjects.subjectName).all()
       return query
 
-    return "TODO"
+    else:
+      return "TODO"
 
+  # only works on localhost, because on heroku each dyno has its own ephermeral filesystem, where any files written will be discarded
   @staticmethod
   def export(app):
     import psycopg2
@@ -39,7 +41,7 @@ class Subjects(db.Model):
 
 
   @staticmethod
-  def insert(subjectCode, term, subjectType, subjectName):
+  def insert(subjectCode=0.000, term, subjectType, subjectName):
     if None in (subjectCode, term, subjectType, subjectName):
       return "Please fill in all required fields"
 
