@@ -28,13 +28,13 @@ class Subjects(db.Model):
 
   @staticmethod
   def export():
-    query = Subjects.select(all=True)
-    import csv
-    with open('Course Details.csv', 'w') as csvfile:
-      csvwriter = csv.writer(csvfile, delimiter=",")
-      for row in query:
-        csvwriter.writerow(row)
-    return "Your csv file should be completed"
+    import psycopg2
+    conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Subjects;")
+    rows = cur.fetchall()
+
+    return str(rows[0])
 
 
   @staticmethod
