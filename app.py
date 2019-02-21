@@ -48,7 +48,7 @@ def display():
 @app.route("/export", methods=['GET', 'POST'])
 def getTable():
   from models import Subjects
-  result = Subjects.export()
+  result = Subjects.export(app)
   return result
  
 if __name__ == "__main__":

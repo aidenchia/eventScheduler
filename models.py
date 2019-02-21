@@ -27,7 +27,7 @@ class Subjects(db.Model):
     return "TODO"
 
   @staticmethod
-  def export():
+  def export(app):
     import psycopg2
     conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require')
     cur = conn.cursor()
