@@ -31,7 +31,7 @@ class Subjects(db.Model):
     import psycopg2
     conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require')
     cur = conn.cursor()
-    cur.execute("SELECT * FROM Subjects;")
+    cur.execute("""SELECT * FROM "Subjects";""")
     rows = cur.fetchall()
 
     return str(rows[0])
