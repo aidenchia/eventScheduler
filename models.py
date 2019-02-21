@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 
+
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 class Subjects(db.Model):
   __tablename__= 'Subjects'
@@ -55,6 +57,31 @@ class Subjects(db.Model):
       db.session.commit()
       result = "Added {}: {} to database".format(str(subject.subjectCode), str(subject.subjectName))
       return result
+
+class Users(db.Model):
+  __tablename__='Users'
+  email = db.Column(db.String, primary_key=True)
+  password = db.Column(db.String)
+  department = db.Column(db.String)
+  authenticated = db.Column(db.Boolean, default=False)
+
+  def is_active(self):
+    return True
+
+  def get_id(self):
+    return self.email
+
+  def is_authenticated(self):
+    return self.authenticated
+
+  def is_anonymous(self):
+    return False
+
+  @login_manager.user_loader
+  def user_loader(user_id):
+    return Users.query.get(user_id)
+
+
 
 
 
