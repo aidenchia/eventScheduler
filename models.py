@@ -61,7 +61,8 @@ class Subjects(db.Model):
 
 class Users(db.Model):
   __tablename__= 'Users'
-  email = db.Column(db.String, primary_key=True)
+  username = db.Column(db.String, primary_key=True)
+  email = db.Column(db.String)
   password = db.Column(db.String)
   department = db.Column(db.String)
   authenticated = db.Column(db.Boolean, default=False)
@@ -70,7 +71,7 @@ class Users(db.Model):
     return True
 
   def get_id(self):
-    return self.email
+    return self.username
 
   def is_authenticated(self):
     return self.authenticated
@@ -79,8 +80,8 @@ class Users(db.Model):
     return False
 
   @login_manager.user_loader
-  def user_loader(user_id):
-    return Users.query.get(user_id)
+  def user_loader(email):
+    return Users.query.get(email)
 
 
 

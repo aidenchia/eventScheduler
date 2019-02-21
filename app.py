@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import flash, redirect, render_template, url_for, request, session, abort
-from flask_login import login_required
-import forms
+from flask_login import login_required, current_user, login_user
+from forms import LoginForm
 import os
 
 
@@ -18,19 +18,19 @@ with app.app_context():
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET','POST'])
 def login():
+  from models import Users
   form = LoginForm()
-  return render_template('login.html', title='Login', form=form)
+  if form.validate_on_submit():
+    return redirect(url_for('courseInput'))
+  return render_template('login.html', title="Log in", form=form)
  
 @app.route('/courseInput', methods=['GET','POST'])
-@login_required
 def courseInput():
     return render_template('index.html')
 
 @app.route("/logout")
-@login_required
 def logout():
-  session['logged_in'] = False
-  return home()
+  return redirect(url_for('login'))
 
 @app.route("/database", methods=['GET','POST'])
 @login_required
