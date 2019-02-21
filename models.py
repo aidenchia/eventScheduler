@@ -41,7 +41,7 @@ class Subjects(db.Model):
 
 
   @staticmethod
-  def insert(subjectCode=0.000, term, subjectType, subjectName):
+  def insert(subjectCode, term, subjectType, subjectName):
     if None in (subjectCode, term, subjectType, subjectName):
       return "Please fill in all required fields"
 
