@@ -6,7 +6,6 @@ import os
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 print("[INFO] DATABASE_URL:", app.config["SQLALCHEMY_DATABASE_URI"])
-print("[INFO] DEBUG MODE = ",app.config["DEBUG"])
 
 from models import db
 with app.app_context():
@@ -51,6 +50,6 @@ def getTable():
   from models import Subjects
   result = Subjects.export(app)
   return result
- 
+  
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=5000)
