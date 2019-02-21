@@ -26,6 +26,16 @@ class Subjects(db.Model):
 
     return "TODO"
 
+  @staticmethod
+  def export():
+    query = Subjects.select(all=True)
+    import csv
+    with open('Course Details.csv', 'w') as csvfile:
+      csvwriter = csv.writer(csvfile, delimiter=",")
+      for row in query:
+        csvwriter.writerow(row)
+    return "Your csv file should be completed"
+
 
   @staticmethod
   def insert(subjectCode, term, subjectType, subjectName):

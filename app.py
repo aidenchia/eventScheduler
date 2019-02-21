@@ -44,6 +44,12 @@ def display():
 
   result = Subjects.select(all=True)
   return render_template("database.html", result = result)
+
+@app.route("/export", methods=['GET', 'POST'])
+def getTable():
+  from models import Subjects
+  result = Subjects.export()
+  return result
  
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=5000)
