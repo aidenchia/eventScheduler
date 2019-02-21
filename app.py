@@ -35,6 +35,7 @@ def logout():
   return home()
 
 @app.route("/database", methods=['GET','POST'])
+@login_required
 def display():
   from models import Subjects
   inserted = Subjects.insert(
