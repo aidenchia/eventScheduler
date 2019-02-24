@@ -1,8 +1,9 @@
 from flask import Flask
 from flask import flash, redirect, render_template, url_for, request, session, abort
-from flask_login import login_required, current_user, login_user
+from flask_login import login_required, current_user, login_user,logout_user
 from forms import LoginForm
 import os
+from models import Users
 
 
 app = Flask(__name__)
@@ -18,18 +19,27 @@ with app.app_context():
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET','POST'])
 def login():
-  from models import Users
+  if current_user.is_authenticated:
+    return redirect(url_for('courseInput'))
+
   form = LoginForm()
   if form.validate_on_submit():
+    user = Users.query.filter_by(username=form.username.data).first()
+    if user is None or not user.check_password(form.password.data):
+      flash('Invalid username of password')
+      return redirect(url_for('login'))
+    login_user(user, remember=form.remember_me.data)
     return redirect(url_for('courseInput'))
-  return render_template('login.html', title="Log in", form=form)
+  return render_template('login.html', title="Sign In", form=form)
  
 @app.route('/courseInput', methods=['GET','POST'])
+@login_required
 def courseInput():
     return render_template('index.html')
 
 @app.route("/logout")
 def logout():
+  logout_user()
   return redirect(url_for('login'))
 
 @app.route("/database", methods=['GET','POST'])

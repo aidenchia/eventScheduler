@@ -1,9 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+login_manager.login_view = 'login'
 
 class Subjects(db.Model):
   __tablename__= 'Subjects'
@@ -62,10 +64,15 @@ class Subjects(db.Model):
 class Users(db.Model):
   __tablename__= 'Users'
   username = db.Column(db.String, primary_key=True)
+  fullname = db.Column(db.String)
   email = db.Column(db.String)
   password = db.Column(db.String)
   department = db.Column(db.String)
   authenticated = db.Column(db.Boolean, default=False)
+  password_hash = db.Column(db.String(128))
+
+  def __repr__(self):
+    return self.fullname
 
   def is_active(self):
     return True
@@ -80,8 +87,14 @@ class Users(db.Model):
     return False
 
   @login_manager.user_loader
-  def user_loader(email):
-    return Users.query.get(email)
+  def user_loader(username):
+    return Users.query.get(username)
+
+  def set_password(self, password):
+    self.password_hash = generate_password_hash(password)
+
+  def check_password(self, password):
+    return check_password_hash(self.password_hash, password)
 
 
 
