@@ -8,7 +8,6 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 
 class Subjects(db.Model):
-  __tablename__= 'Subjects'
   subjectCode = db.Column(db.Float, primary_key=True) # primary keys are unique identifiers
   term = db.Column(db.Integer, nullable=True)
   subjectType = db.Column(db.Text, nullable=True)
@@ -39,7 +38,7 @@ class Subjects(db.Model):
     conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require')
     cur = conn.cursor()
     excel = open('course_details.csv', 'w+')
-    cur.copy_to(excel, table='"Subjects"', sep=",")
+    cur.copy_to(excel, table="Subjects", sep=",")
     excel.close()
 
     return "Data written to 'course_details.csv'"
@@ -62,7 +61,6 @@ class Subjects(db.Model):
       return result
 
 class Users(db.Model):
-  __tablename__= 'Users'
   username = db.Column(db.String, primary_key=True)
   fullname = db.Column(db.String)
   email = db.Column(db.String)
@@ -90,10 +88,8 @@ class Users(db.Model):
   def user_loader(username):
     return Users.query.get(username)
 
-  def set_password(self, password):
-    self.password_hash = generate_password_hash(password)
-
   def check_password(self, password):
+    self.password_hash = generate_password_hash(self.password)
     return check_password_hash(self.password_hash, password)
 
 
