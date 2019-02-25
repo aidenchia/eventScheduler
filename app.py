@@ -46,12 +46,15 @@ def logout():
 @login_required
 def display():
   from models import Subjects
-  inserted = Subjects.insert(
-    request.form['subjectCode'], 
-    request.form['term'], 
-    request.form['subjectType'], 
-    request.form['subjectName'])
-
+  try:
+    inserted = Subjects.insert( 
+      request.form['subjectCode'],
+      request.form['term'], 
+      request.form['subjectType'], 
+      request.form['subjectName'])
+  except:
+    print("Empty fields")
+    
   result = Subjects.select(all=True)
   return render_template("database.html", result = result)
 

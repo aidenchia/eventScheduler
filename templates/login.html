@@ -1,24 +1,23 @@
 <link rel="icon" type="image/png" href="/static/images/icons/sutd-logo-png-1.png"/>
 <link rel="stylesheet" href="/static/style.css" type="text/css">
 {% block content %}
-    {{form.csrf_token}}
     <form action="" method="POST">
+        {{form.csrf_token}}
         <div class="login">
-        <div class="login-screen">
+        <div class="login-screen">  
         <div class="app-title">
+
         <h1>Login</h1>
-        </div>
-        <div class="login-form">
-        <div class="control-group">   
+        </div> 
         <p>
-            {{form.username.label}}<br>
-            <input type="text" class="login-field" value="" placeholder="username" name="username">
+            {{form.username.label}}
+            {{form.username}}
         </p>
         <p>
-            {{ form.password.label }}
-            <input type="password" class="login-field" value="" placeholder="password" name="password">
+            {{form.password.label}}
+            {{form.password}}
         </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{form.remember_me}} {{form.remember_me.label}} </p>
         <p><input type=submit value="Sign In"></p>
     </form>
 {% endblock %}
