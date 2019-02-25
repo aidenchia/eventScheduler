@@ -1,1 +1,2 @@
-/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/collections/abc.py
+from _collections_abc import *
+from _collections_abc import __all__

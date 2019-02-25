@@ -1,1 +1,6 @@
-/Library/Frameworks/Python.framework/Versions/3.7/include/python3.7m/internal/import.h
+#ifndef Py_INTERNAL_IMPORT_H
+#define Py_INTERNAL_IMPORT_H
+
+extern const char *_Py_CheckHashBasedPycsMode;
+
+#endif
