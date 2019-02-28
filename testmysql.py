@@ -1,6 +1,17 @@
-import json
-from collections import OrderedDict
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Feb 19 14:53:33 2019
 
+@author: Tan You
+"""
+
+from flask import Flask, render_template
+import json, pandas as pd
+from pandas import ExcelWriter
+from pandas import ExcelFile
+
+
+app = Flask(__name__)
 
 term5coh1 = {
 'mon': {'8:30-9:00':'50.034', '9:00-9:30':'50.034', '9:30-10:00':'50.034', '10:00-10:30':'50.005', 
@@ -29,35 +40,43 @@ term5coh1 = {
 		'14:30-15:00':'null', '15:00-15:30':'null', '15:30-16:00':'null', '16:00-16:30':'null',
 		'17:00-17:30':'null', '17:30-18:00':'null', '18:00-18:30':'null'}}
 
-term5loc = [{'50.003':{'cohort1':'2.506', 'cohort2':'2.507', 'cohort3':'2.507'},
-			 '50.005':{'cohort1':'2.506', 'cohort2':'2.506', 'cohort3':'2.507', 'lab':'2.505'},
-			 '50.034':{'cohort1':'2.506', 'cohort2':'2.506', 'cohort3':'2.506', 'lec':'2.505'}}]
+json_send = json.dumps(term5coh1)
 
-json_tt = json.dumps(term5coh1)
-#print (json_tt);
-json_loaded = json.loads(json_tt)
-#print(type(json_tt))
-#print(type(json_loaded))
-#print(json_loaded)
+@app.route("/GetData")
+def GetData():
+    """
+    Do not delete the commented out code until submission at end of term
+    """
+    """
+    df = pd.read_excel('sample_input_format.xlsx',sheetname='ISTD')
+    temp= df.to_dict('records')
+    columnNames = df.columns.values
+    return render_template('testjsondisplay.html',records=temp, colnames = columnNames)
+    """
+    """
+    json_retrived = json.loads(json_send)
+    term5coh1_inverted = dict()
+    for k, v in json_retrived.items():
+        for k1, v2 in v.items():
+            term5coh1_inverted.setdefault(k1,dict())[k] = v2
+    """
+    term5coh1_inverted = dict()
+    for k, v in term5coh1.items():
+        previous_lesson = None
+        rowspan_count = 1
+        previous_time = '8:30-9:00'
+        for k1, v2 in v.items():
+            #print('yes')
+            if previous_lesson == v2:
+                rowspan_count+=1
+                term5coh1_inverted[previous_time][k][1] = rowspan_count
+                term5coh1_inverted.setdefault(k1,dict())[k] = [v2,0]
+            else:
+                previous_lesson = v2
+                rowspan_count = 1
+                previous_time = k1
+                term5coh1_inverted.setdefault(k1,dict())[k] = [v2,rowspan_count]
+    return render_template('testjsondisplay.html',json_r=term5coh1_inverted)
 
-term5coh1_inverted = dict()
-term5coh1_new = dict()
-for k, v in term5coh1.items():
-    previous_lesson = None
-    rowspan_count = 1
-    previous_time = '8:30-9:00'
-    for k1, v2 in v.items():
-        #print('yes')
-        if previous_lesson == v2:
-            rowspan_count+=1
-            term5coh1_inverted[previous_time][k][1] = rowspan_count
-            term5coh1_inverted.setdefault(k1,dict())[k] = [v2,0]
-        else:
-            previous_lesson = v2
-            rowspan_count = 1
-            previous_time = k1
-            term5coh1_inverted.setdefault(k1,dict())[k] = [v2,rowspan_count]
-    #print(term5coh1_inverted)
-            
-print(term5coh1_inverted)
-#print(term5coh1)
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port=8000)

@@ -1,9 +1,12 @@
 from flask import Flask
 from flask import flash, redirect, render_template, url_for, request, session, abort
 from flask_login import login_required, current_user, login_user,logout_user
+from flask import jsonify
 from forms import LoginForm
 import os
 from models import Users
+#import importlib
+
 
 
 app = Flask(__name__)
@@ -64,6 +67,10 @@ def getTable():
   from models import Subjects
   result = Subjects.export(app)
   return result
-  
+"""
+@app.route("/)
+def viewSchedule():
+    spec = importlib.util.spec_from_file_location("json1.py","wangtianduo/json1.py")
+"""
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=5000)
